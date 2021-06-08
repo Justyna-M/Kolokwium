@@ -12,13 +12,14 @@
         <div class="cell">
             1
         </div>
-        <ul class="tlo" v-for="row in rows" >
+        <ul class="tlo" v-for="row in rows">
             <li v-for="column in columns">
-                <div class="cell" :class="[active ? 'active' : '']">{{row}},{{column}}</div>
+                <div class="cell" :class="[active==(row,column) ? 'active' : '']" @click="zmiana(row,column)">
+                    {{row}},{{column}}</div>
             </li>
         </ul>
-        
-        
+
+
         {{ message }}
     </div>
 
@@ -30,6 +31,13 @@
                 rows: 10,
                 columns: 10,
                 active: "1,1"
+            },
+            methods: {
+                zmiana: function (row, column) {
+                    active = (row, column)
+                    console.log(active)
+                }
+
             }
         })
     </script>
